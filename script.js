@@ -1,4 +1,5 @@
 var map, heatmap;
+
 function initMap(){
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 6,
@@ -14,28 +15,6 @@ function initMap(){
         dissipating: true
     });
 }
-
-
-var temperature = {};
-
-function loadJSON(callback) {
-
-    var xobj = new XMLHttpRequest();
-    xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'temperature.json', true); // Replace 'my_data' with the path to your file
-    xobj.onreadystatechange = function () {
-        if (xobj.readyState == 4 && xobj.status == "200") {
-            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-            callback(xobj.responseText);
-        }
-    };
-    xobj.send(null);
-}
-
-loadJSON(function(response) {
-    temperature = JSON.parse(response);
-    console.log(temperature);
-});
 
 
 function alertDate() {
